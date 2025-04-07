@@ -14,11 +14,11 @@ Clone repo and create a virtual environment
 $ git clone https://github.com/mandirashetty/basic_web_with_chatbox.git 
 $ cd chatbot-deployment
 $ python3 -m venv venv
-$ . venv/bin/activate
+$ . myenv\Scripts\activate
 ```
 Install dependencies
 ```
-$ (venv) pip install Flask torch torchvision nltk
+$ (venv)  python -m pip install Flask torch torchvision nltk
 ```
 Install nltk package
 ```
