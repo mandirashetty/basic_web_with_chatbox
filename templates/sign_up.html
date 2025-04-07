@@ -1,67 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
 <head>
     <meta charset="UTF-8">
-    <title>Chatbot</title>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <style>
-        .container {
+        body {
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             height: 100vh;
             background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            margin: 0;
+            font-family: Arial, sans-serif;
+            flex-direction: column;
         }
-        .welcome-box {
-            text-align: center;
+        .auth-box {
             background: white;
-            padding: 20px;
+            padding: 25px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1s ease-in-out;
+            text-align: center;
+            width: 300px;
         }
-        .welcome-box h2 {
+        .auth-box h2 {
             color: #ff5e62;
+            margin-bottom: 20px;
         }
-        .welcome-box p {
-            color: #333;
+        .auth-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
         }
-        .welcome-buttons {
-            margin-top: 10px;
+        .auth-box input:focus {
+            border-color: #ff5e62;
+            box-shadow: 0 0 5px rgba(255, 94, 98, 0.5);
         }
-        .welcome-buttons button {
+        .auth-box button {
+            width: 100%;
+            padding: 10px;
             background: #ff5e62;
             color: white;
             border: none;
-            padding: 10px 20px;
-            margin: 5px;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
             transition: 0.3s;
         }
-        .welcome-buttons button:hover {
+        .auth-box button:hover {
             background: #ff2e40;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .auth-box p {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .auth-box a {
+            color: #ff5e62;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .auth-box a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <!-- Welcome Box -->
-    <div class="welcome-box">
-        <h2>Welcome to Chat Support</h2>
-        <p>Please sign in or sign up to continue</p>
-        <div class="welcome-buttons">
-            <button class="sign-in" onclick="location.href='{{ url_for('sign_in') }}'">Sign In</button>
-            <button class="sign-up" onclick="location.href='{{ url_for('sign_up') }}'">Sign Up</button>
-        </div>
+
+    <div class="auth-box">
+        <h2>Sign Up</h2>
+        <form action="{{ url_for('dashboard') }}" method="POST">
+            <input type="text" name="username" placeholder="Username" required><br>
+            <input type="email" name="email" placeholder="Email" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="{{ url_for('sign_in') }}">Sign In</a></p>
     </div>
-</div>
+
 </head>
 <body>
 <div class="container">
